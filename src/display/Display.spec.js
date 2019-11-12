@@ -1,8 +1,10 @@
 // Test away!
 import React from 'react';
 import Display from './Display.js';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
+afterEach(cleanup);
 
 describe('<Display />', () => {
     it('render w/o crash', () => {
@@ -21,7 +23,6 @@ describe('<Display />', () => {
         const unlock = getByText(/unlocked/i);
         const open = getByText(/open/i);
         // verifying correct colors (css classes)
-        // expect(unlock.className).toMatch(/green-led/i);
         expect(unlock).toHaveClass('green-led');
         expect(open).toHaveClass('green-led');
     });
@@ -44,7 +45,6 @@ describe('<Display />', () => {
         const locked = getByText(/^locked$/i);
         const closed = getByText(/closed/i);
         // verifying correct colors (css classes)
-        // expect(unlock.className).toMatch(/green-led/i);
         expect(locked).toHaveClass('red-led');
         expect(closed).toHaveClass('red-led');
     });
