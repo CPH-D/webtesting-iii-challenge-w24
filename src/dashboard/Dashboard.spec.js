@@ -9,3 +9,18 @@ describe('<Dashboard', () => {
         render(<Dashboard />);
     });
 });
+
+
+describe('<Dashboard /> state transitions', () => {
+    const { getByText } = render (<Dashboard />);
+    it('default state open & unlocked', () => {
+        
+        getByText(/^open$/i);
+        getByText(/^unlocked$/i);
+
+        getByText(/^lock gate$/i);
+        getByText(/^close gate$/i);
+    });
+
+    
+});
